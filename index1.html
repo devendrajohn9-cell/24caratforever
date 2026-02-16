@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Pooja ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Georgia, serif;
+  text-align: center;
+  color: white;
+  background: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("https://images.unsplash.com/photo-1518199266791-5375a83190b7");
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  margin-top: 120px;
+  font-size: 30px;
+  text-shadow: 2px 2px 10px black;
+}
+
+button {
+  padding: 12px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 20px;
+  transition: 0.3s;
+}
+
+#yesBtn {
+  background: #ff3366;
+  color: white;
+}
+
+#yesBtn:hover {
+  transform: scale(1.1);
+}
+
+#noBtn {
+  background: white;
+  color: black;
+  position: absolute;
+  left: 55%;
+  top: 55%;
+}
+
+#message {
+  display: none;
+  font-size: 22px;
+  margin-top: 30px;
+  text-shadow: 2px 2px 8px black;
+  animation: fadeIn 2s ease forwards;
+}
+
+.image-gallery {
+  display: none;
+  margin-top: 20px;
+}
+
+.image-gallery img {
+  width: 45%;
+  max-width: 250px;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 0, 100, 0.6);
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.heart {
+  position: absolute;
+  font-size: 18px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh); opacity: 1;}
+  100% {transform: translateY(-10vh); opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="https://files.catbox.moe/gzcort.mp3" type="audio/mpeg">
+</audio>
+
+<h1 id="question">Pooja-24C 💖<br>Will you be mine forever?</h1>
+
+<button id="yesBtn" onclick="sayYes()">Yes ❤️</button>
+<button id="noBtn">No 🙈</button>
+
+<div id="message">
+  My dearest Bujji Bangaram… 💍<br><br>
+  From the moment you entered my world,<br>
+  everything became brighter and meaningful.<br><br>
+  I promise to stand beside you,<br>
+  protect your heart,<br>
+  and love you endlessly.<br><br>
+  Forever yours,<br>
+  <b>Dev ❤️</b>
+</div>
+
+<!-- ✅ 4 Images Added -->
+<div class="image-gallery" id="gallery">
+  <img src="https://i.postimg.cc/GmkscB2S/In_Shot_20230813_100724079.jpg">
+  <img src="https://i.postimg.cc/sgk9mBHn/IMG_20250214_WA0103.jpg">
+  <img src="https://i.postimg.cc/Kvy10Pmb/IMG_20250118_152340.jpg">
+  <img src="https://i.postimg.cc/cLk4GwGx/Screenshot_2026_02_13_13_24_48_71_92460851df6f172a4592fca41cc2d2e6.jpg">
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const music = document.getElementById("bgMusic");
+
+document.addEventListener("mousemove", function(e) {
+  const rect = noBtn.getBoundingClientRect();
+  const distance = Math.hypot(
+    e.clientX - (rect.left + rect.width/2),
+    e.clientY - (rect.top + rect.height/2)
+  );
+
+  if (distance < 100) {
+    const newX = Math.random() * (window.innerWidth - rect.width);
+    const newY = Math.random() * (window.innerHeight - rect.height);
+    noBtn.style.left = newX + "px";
+    noBtn.style.top = newY + "px";
+  }
+});
+
+function sayYes() {
+  document.getElementById("message").style.display = "block";
+  document.getElementById("gallery").style.display = "block";
+  document.getElementById("question").style.display = "none";
+  noBtn.style.display = "none";
+  document.getElementById("yesBtn").style.display = "none";
+  music.play();
+}
+
+setInterval(function() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 800);
+</script>
+
+</body>
+</html>
